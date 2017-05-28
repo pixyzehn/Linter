@@ -52,7 +52,7 @@ class LinterTests: XCTestCase {
     }
 
     func testIncludedAndExcludedOptions() throws {
-        try! Linter(arguments: ["linter", "--included", "Main", "MainTests", "--excluded", "Pods", "Carthage"]).run()
+        try Linter(arguments: ["linter", "--included", "Main", "MainTests", "--excluded", "Pods", "Carthage"]).run()
 
         let file = try FileSystem().currentFolder.file(named: fileName)
         let content = try file.readAsString()
