@@ -8,5 +8,5 @@ import XCTest
 @testable import LinterTests
 
 XCTMain([
-    testCase(LinterTests.allTests),
+    testCase(LinterTests.allTests)
 ])

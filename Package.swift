@@ -14,5 +14,8 @@ let package = Package(
             dependencies: ["LinterCore"]
         ),
         Target(name: "LinterCore")
+    ],
+    dependencies: [
+        .Package(url: "https://github.com/JohnSundell/Files.git", majorVersion: 1)
     ]
 )
