@@ -33,11 +33,11 @@ class LinterTests: XCTestCase {
         }
     }
 
-    func testCreatingYamlForSwiftLint() {
-        try! Linter(arguments: ["linter", "--included", "Templates"]).run()
+    func testCreatingYamlForSwiftLint() throws {
+        try Linter(arguments: ["linter", "--included", "Templates"]).run()
 
-        let file = try! FileSystem().currentFolder.file(named: fileName)
-        let content = try! file.readAsString()
+        let file = try FileSystem().currentFolder.file(named: fileName)
+        let content = try file.readAsString()
 
         XCTAssertTrue(content.contains("disabled_rules:"))
         XCTAssertTrue(content.contains("- trailing_semicolon # (1) Correctable (you can use `swiftlint autocorrect` to fix)"))
@@ -51,11 +51,11 @@ class LinterTests: XCTestCase {
         XCTAssertTrue(content.contains("- Templates"))
     }
 
-    func testIncludedAndExcludedOptions() {
+    func testIncludedAndExcludedOptions() throws {
         try! Linter(arguments: ["linter", "--included", "Main", "MainTests", "--excluded", "Pods", "Carthage"]).run()
 
-        let file = try! FileSystem().currentFolder.file(named: fileName)
-        let content = try! file.readAsString()
+        let file = try FileSystem().currentFolder.file(named: fileName)
+        let content = try file.readAsString()
 
         XCTAssertTrue(content.contains("included:\n  - Main\n  - MainTests"))
         XCTAssertTrue(content.contains("excluded:\n  - Pods\n  - Carthage"))
