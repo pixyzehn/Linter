@@ -79,9 +79,9 @@ public final class Linter {
 
     private func printDescription() {
         print("Linter")
-        print("   help: Display general or command-specific help")
-        print("   --included: Paths to include during linting.")
-        print("   --excluded: Paths to ignore during linting.")
+        print("   help: Display general or command-specific help.")
+        print("   --included: Paths to include during linting and add to `.swiftlint.yml` as `included:`.")
+        print("   --excluded: Paths to ignore during linting and add to `.swiftlint.yml` as `excluded:`.")
     }
 
     private func addIncludedOrExcludedIfNeeded(arguments: [String]) {
