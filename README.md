@@ -2,7 +2,7 @@
 [![Swift 3.1](https://img.shields.io/badge/swift-3.1-orange.svg?style=flat)](#)
 [![SPM](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://github.com/apple/swift-package-manager)
 
-Linter helps you to setup `.swiftlint.yml` based on initial warnings and errors by executing `swiftlint`. It also tells you about how many warnings and errors occurs in each identifier and which identifier are [correctable](https://github.com/realm/SwiftLint#auto-correct) (it means you can use `swiftlint autocorrect` to fix).
+Linter helps you to set up `.swiftlint.yml` based on initial warnings and errors by executing `swiftlint`. It also tells you about how many warnings and errors occur in each identifier and which identifier are [correctable](https://github.com/realm/SwiftLint#auto-correct) (it means you can use `swiftlint autocorrect` to fix).
 
 After using linter, you'll see the following `.swiftlint.yml` for instance.
 
