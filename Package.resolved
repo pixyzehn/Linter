@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "Files",
-        "repositoryURL": "https://github.com/JohnSundell/Files.git",
+        "repositoryURL": "https://github.com/pixyzehn/Files.git",
         "state": {
           "branch": null,
-          "revision": "ce154128bd2944871f2808447bd1a4c4df458c4b",
-          "version": "1.10.0"
+          "revision": "85a608aa0f3e12c3a574cbfe666943dd06a7af5d",
+          "version": "1.13.0"
         }
       }
     ]
