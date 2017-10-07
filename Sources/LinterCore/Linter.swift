@@ -140,7 +140,7 @@ public final class Linter {
     private func extractIdentifiers(outputs: [String]) -> (Int, Int, [String: Int]) {
         var warningCount = 0
         var errorCount = 0
-        var identifiers: [String: Int] = [:]
+        var identifiersWithCount = [String: Int]()
 
         print("Extracting the identifier of warnings and errors...")
         for output in outputs {
@@ -150,7 +150,7 @@ public final class Linter {
                 errorCount += 1
             } else {
                 print("No error & warning 🎉")
-                return (warningCount, errorCount, identifiers)
+                return (warningCount, errorCount, [:])
             }
 
             // Assume the following output
@@ -163,15 +163,11 @@ public final class Linter {
                 let endIndex = result.index(before: result.endIndex)
 
                 let identifier = String(result[startIndex..<endIndex])
-                if let count = identifiers[identifier] {
-                    identifiers[identifier] = count + 1
-                } else {
-                    identifiers[identifier] = 1
-                }
+                identifiersWithCount[identifier, default: 0] += 1
             }
         }
 
-        return (warningCount, errorCount, identifiers)
+        return (warningCount, errorCount, identifiersWithCount)
     }
 
     private func showSummary(warningCount: Int, errorCount: Int, identifiers: [String: Int]) {
