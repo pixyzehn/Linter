@@ -1,21 +1,22 @@
-/**
- *  Linter
- *  Copyright (c) Nagasawa Hiroki 2017
- *  Licensed under the MIT license. See LICENSE file.
- */
+// swift-tools-version:4.0
+// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "Linter",
-    targets: [
-        Target(
-            name: "Linter",
-            dependencies: ["LinterCore"]
-        ),
-        Target(name: "LinterCore")
-    ],
     dependencies: [
-        .Package(url: "https://github.com/pixyzehn/Files.git", majorVersion: 1)
+        .package(url: "https://github.com/pixyzehn/Files.git", from: "1.13.0")
+    ],
+    targets: [
+        .target(
+            name: "Linter",
+            dependencies: ["LinterCore"]),
+        .target(
+            name: "LinterCore",
+            dependencies: ["Files"]),
+        .testTarget(
+            name: "LinterTests",
+            dependencies: ["LinterCore"])
     ]
 )
