@@ -162,7 +162,7 @@ public final class Linter {
                 let startIndex = result.index(after: result.startIndex)
                 let endIndex = result.index(before: result.endIndex)
 
-                let identifier = result.substring(with: startIndex..<endIndex)
+                let identifier = String(result[startIndex..<endIndex])
                 if let count = identifiers[identifier] {
                     identifiers[identifier] = count + 1
                 } else {
@@ -227,7 +227,7 @@ private extension Pipe {
 
         guard !output.hasSuffix("\n") else {
             let outputLength = output.distance(from: output.startIndex, to: output.endIndex)
-            return output.substring(to: output.index(output.startIndex, offsetBy: outputLength - 1))
+            return String(output[..<output.index(output.startIndex, offsetBy: outputLength - 1)])
         }
 
         return output
