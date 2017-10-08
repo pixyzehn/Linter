@@ -1,8 +1,7 @@
 disabled_rules:
-  - large_tuple # (1) 
-  - line_length # (3) 
-  - cyclomatic_complexity # (1) 
-  - force_try # (6) 
+  - cyclomatic_complexity # (1)
+  - line_length # (3)
+  - large_tuple # (1)
 
 included:
   - Sources
