@@ -1,7 +1,7 @@
 disabled_rules:
   - cyclomatic_complexity # (1)
-  - line_length # (3)
   - large_tuple # (1)
+  - line_length # (3)
 
 included:
   - Sources
