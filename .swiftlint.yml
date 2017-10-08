@@ -1,7 +1,6 @@
 disabled_rules:
   - large_tuple # (1) 
   - line_length # (3) 
-  - identifier_name # (25) 
   - cyclomatic_complexity # (1) 
   - force_try # (6) 
 
