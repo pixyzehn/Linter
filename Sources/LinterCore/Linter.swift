@@ -190,7 +190,7 @@ public final class Linter {
             for (identifier, count) in identifiers {
                 var onelineContent = "  - \(identifier) # (\(count))"
                 if CorrectableRule(rawValue: identifier) != nil {
-                    onelineContent += "Correctable (you can use `swiftlint autocorrect` to fix)"
+                    onelineContent += " Correctable (you can use `swiftlint autocorrect` to fix)"
                 }
                 print(onelineContent)
                 onelineContent += "\n"
