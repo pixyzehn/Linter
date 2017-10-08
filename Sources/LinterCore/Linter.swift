@@ -18,46 +18,6 @@ public final class Linter {
     private let fileName = ".swiftlint.yml"
     private var file: File!
 
-    /// The configuration from `swiftlint rules` based on the 0.23.0 version.
-    private enum CorrectableRule: String {
-        case closingBrace = "closing_brace"
-        case closureSpacing = "closure_spacing"
-        case colon
-        case comma
-        case emptyEnumArguments = "empty_enum_arguments"
-        case emptyParameters = "empty_parameters"
-        case emptyParenthesesWithTrailingClosure = "empty_parentheses_with_trailing_closure"
-        case explicitInit = "explicit_init"
-        case implicitReturn = "implicit_return"
-        case joinedDefaultParameter = "joined_default_parameter"
-        case leadingWhitespace = "leading_whitespace"
-        case legacyCggeometryFunctions = "legacy_cggeometry_functions"
-        case legacyConstant = "legacy_constant"
-        case legacyConstructor = "legacy_constructor"
-        case legacyNsgeometryFunctions = "legacy_nsgeometry_functions"
-        case mark
-        case nimbleOperator = "nimble_operator"
-        case numberSeparator = "number_separator"
-        case openingBrace = "opening_brace"
-        case operatorUsageWhitespace = "operator_usage_whitespace"
-        case privateOverFileprivate = "private_over_fileprivate"
-        case protocolPropertyAccessorsOrder = "protocol_property_accessors_order"
-        case redundantDiscardableLet = "redundant_discardable_let"
-        case redundantNilCoalescing = "redundant_nil_coalescing"
-        case redundantOptionalInitialization = "redundant_optional_initialization"
-        case redundantVoidReturn = "redundant_void_return"
-        case returnArrowWhitespace = "return_arrow_whitespace"
-        case statementPosition = "statement_position"
-        case trailingComma = "trailing_comma"
-        case trailingNewline = "trailing_newline"
-        case trailingSemicolon = "trailing_semicolon"
-        case trailingWhitespace = "trailing_whitespace"
-        case unneededParenthesesInClosureArgument = "unneeded_parentheses_in_closure_argument"
-        case unusedClosureParameter = "unused_closure_parameter"
-        case verticalWhitespace = "vertical_whitespace"
-        case voidReturn = "void_return"
-    }
-
     public func run() throws {
         if arguments.count == 2 && arguments.contains("help") {
             printDescription()
@@ -166,9 +126,9 @@ public final class Linter {
             let typePattern = "\\([a-z_]+\\)"
             if let typeRange = output.range(of: typePattern,
                                        options: .regularExpression) {
-                let result = output[typeRange]
-                let startIndex = result.index(after: result.startIndex)
-                let endIndex = result.index(before: result.endIndex)
+                let result = output[typeRange] // (identifier_name)
+                let startIndex = result.index(after: result.startIndex) // Remove `(`
+                let endIndex = result.index(before: result.endIndex) // Remove `)`
 
                 let identifier = String(result[startIndex..<endIndex])
                 identifiersWithCount[identifier, default: 0] += 1
@@ -200,40 +160,5 @@ public final class Linter {
             try? file.write(string: content + "\n" + (try file.readAsString()), encoding: .utf8)
         }
         print("----------------------------------")
-    }
-}
-
-private extension Process {
-    @discardableResult func launchBash(with command: String) throws -> String {
-        launchPath = "/bin/bash"
-        arguments = ["-c", command]
-
-        let outputPipe = Pipe()
-        standardOutput = outputPipe
-
-        launch()
-
-        let output = outputPipe.read() ?? ""
-
-        waitUntilExit()
-
-        return output
-    }
-}
-
-private extension Pipe {
-    func read() -> String? {
-        let data = fileHandleForReading.readDataToEndOfFile()
-
-        guard let output = String(data: data, encoding: .utf8) else {
-            return nil
-        }
-
-        guard !output.hasSuffix("\n") else {
-            let outputLength = output.distance(from: output.startIndex, to: output.endIndex)
-            return String(output[..<output.index(output.startIndex, offsetBy: outputLength - 1)])
-        }
-
-        return output
     }
 }
