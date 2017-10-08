@@ -46,10 +46,14 @@ public final class Linter {
     // MARK: Private method
 
     private func printDescription() {
-        print("Linter")
-        print("   help: Display general or command-specific help.")
-        print("   --included: Paths to include during linting and add to `.swiftlint.yml` as `included:`.")
-        print("   --excluded: Paths to ignore during linting and add to `.swiftlint.yml` as `excluded:`.")
+        print(
+            """
+            Linter
+                help: Display general or command-specific help.
+                --included: Paths to include during linting and add to `.swiftlint.yml` as `included:`.
+                --excluded: Paths to ignore during linting and add to `.swiftlint.yml` as `excluded:`.
+            """
+        )
     }
 
     private func addIncludedOrExcludedIfNeeded(arguments: [String]) {
@@ -138,8 +142,12 @@ public final class Linter {
     }
 
     private func showSummary(warningCount: Int, errorCount: Int, identifiers: [String: Int]) {
-        print("----------------------------------")
-        print("Summary")
+        print(
+            """
+            ----------------------------------
+            Summary
+            """
+        )
 
         defer {
             print("----------------------------------")
@@ -149,8 +157,12 @@ public final class Linter {
             print("No error & warning 🎉")
         }
 
-        print("Warning count: \(warningCount)")
-        print("Error count  : \(errorCount)\n")
+        print(
+            """
+            Warning count: \(warningCount)
+            Error count  : \(errorCount)
+            """
+        )
 
         if !identifiers.isEmpty {
             var content = "disabled_rules:\n"
