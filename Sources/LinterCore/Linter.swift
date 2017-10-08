@@ -18,14 +18,18 @@ public final class Linter {
     private let fileName = ".swiftlint.yml"
     private var file: File!
 
-    /// The configuration from `swiftlint rules` based on the 0.19.0 version.
+    /// The configuration from `swiftlint rules` based on the 0.22.0 version.
     private enum CorrectableRule: String {
         case closing_brace
+        case closure_spacing
         case colon
         case comma
+        case empty_enum_arguments
         case empty_parameters
         case empty_parentheses_with_trailing_closure
         case explicit_init
+        case implicit_return
+        case joined_default_parameter
         case leading_whitespace
         case legacy_cggeometry_functions
         case legacy_constant
@@ -36,15 +40,19 @@ public final class Linter {
         case number_separator
         case opening_brace
         case operator_usage_whitespace
+        case private_over_fileprivate
+        case protocol_property_accessors_order
         case redundant_discardable_let
         case redundant_nil_coalescing
         case redundant_optional_initialization
         case redundant_void_return
         case return_arrow_whitespace
         case statement_position
+        case trailing_comma
         case trailing_newline
         case trailing_semicolon
         case trailing_whitespace
+        case unneeded_parentheses_in_closure_argument
         case unused_closure_parameter
         case vertical_whitespace
         case void_return
