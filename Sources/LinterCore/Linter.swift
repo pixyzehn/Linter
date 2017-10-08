@@ -54,7 +54,7 @@ public final class Linter {
         case trailingWhitespace = "trailing_whitespace"
         case unneededParenthesesInClosureArgument = "unneeded_parentheses_in_closure_argument"
         case unusedClosureParameter = "unused_closure_parameter"
-        case verticalWhitespace = "verticalWhitespace"
+        case verticalWhitespace = "vertical_whitespace"
         case voidReturn = "void_return"
     }
 
