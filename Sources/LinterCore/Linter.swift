@@ -188,7 +188,7 @@ public final class Linter {
             var content = "disabled_rules:\n"
 
             for (identifier, count) in identifiers {
-                var onelineContent = "  - \(identifier) # (\(count)) "
+                var onelineContent = "  - \(identifier) # (\(count))"
                 if CorrectableRule(rawValue: identifier) != nil {
                     onelineContent += "Correctable (you can use `swiftlint autocorrect` to fix)"
                 }
