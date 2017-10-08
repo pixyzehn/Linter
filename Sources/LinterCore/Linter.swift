@@ -18,7 +18,7 @@ public final class Linter {
     private let fileName = ".swiftlint.yml"
     private var file: File!
 
-    /// The configuration from `swiftlint rules` based on the 0.22.0 version.
+    /// The configuration from `swiftlint rules` based on the 0.23.0 version.
     private enum CorrectableRule: String {
         case closingBrace = "closing_brace"
         case closureSpacing = "closure_spacing"
