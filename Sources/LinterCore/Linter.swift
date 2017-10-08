@@ -117,8 +117,7 @@ public final class Linter {
             } else if output.contains("error") {
                 errorCount += 1
             } else {
-                print("No error & warning 🎉")
-                return (warningCount, errorCount, [:])
+                continue
             }
 
             // Assume the following output
@@ -141,6 +140,15 @@ public final class Linter {
     private func showSummary(warningCount: Int, errorCount: Int, identifiers: [String: Int]) {
         print("----------------------------------")
         print("Summary")
+
+        defer {
+            print("----------------------------------")
+        }
+
+        if warningCount == 0 && errorCount == 0 {
+            print("No error & warning 🎉")
+        }
+
         print("Warning count: \(warningCount)")
         print("Error count  : \(errorCount)\n")
 
@@ -159,6 +167,5 @@ public final class Linter {
 
             try? file.write(string: content + "\n" + (try file.readAsString()), encoding: .utf8)
         }
-        print("----------------------------------")
     }
 }
