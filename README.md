@@ -55,6 +55,11 @@ $ swift build -c release -Xswiftc -static-stdlib
 $ cp -f .build/release/Linter /usr/local/bin/Linter
 ```
 
+### [Mint](https://github.com/yonaskolb/mint)
+```console
+$ mint run pixyzehn/Linter
+```
+
 See also [SwiftLint's installation](https://github.com/realm/SwiftLint#installation)
 
 ## Usage
