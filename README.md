@@ -33,7 +33,7 @@ Linter
 
 Linter requires / supports the following environments:
 
-- Swift 4.0
+- Swift 4.1
 - SwiftLint 0.23.0 or later
 
 ## Installation
