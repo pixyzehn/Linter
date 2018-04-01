@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:4.1
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "Linter",
     dependencies: [
-        .package(url: "https://github.com/pixyzehn/Files.git", from: "1.13.0")
+        .package(url: "https://github.com/pixyzehn/Files.git", from: "1.14.0")
     ],
     targets: [
         .target(
