@@ -7,3 +7,6 @@ install:
 
 uninstall:
 	rm -f $(INSTALL_PATH)
+
+lint:
+	linter --included Sources Tests --excluded Templates
