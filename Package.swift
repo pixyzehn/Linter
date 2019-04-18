@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "Linter",
     dependencies: [
-        .package(url: "https://github.com/JohnSundell/Files.git", from: "2.2.1")
+        .package(url: "https://github.com/JohnSundell/Files.git", from: "3.1.0")
     ],
     targets: [
         .target(
