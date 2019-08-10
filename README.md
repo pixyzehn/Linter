@@ -51,7 +51,7 @@ $ make
 
 ```console
 $ git clone git@github.com:pixyzehn/Linter.git && cd Linter
-$ swift build -c release -Xswiftc -static-stdlib
+$ swift build -c release
 $ cp -f .build/release/Linter /usr/local/bin/Linter
 ```
 
