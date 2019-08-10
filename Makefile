@@ -2,7 +2,7 @@ INSTALL_PATH = /usr/local/bin/Linter
 
 install:
 	swift package update
-	swift build -c release -Xswiftc -static-stdlib
+	swift build -c release
 	cp -f .build/release/Linter $(INSTALL_PATH)
 
 uninstall:
