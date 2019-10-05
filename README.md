@@ -1,6 +1,6 @@
 # Linter
 [![SPM](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=for-the-badge)](https://github.com/apple/swift-package-manager)
-[![Build Status](https://img.shields.io/travis/pixyzehn/Linter/master?style=for-the-badge)](https://travis-ci.org/pixyzehn/Linter)
+[![Build Status](https://img.shields.io/travis/pixyzehn/Linter/master?style=for-the-badge)](https://travis-ci.com/pixyzehn/Linter)
 
 Linter helps you to set up `.swiftlint.yml` based on initial warnings and errors by executing `swiftlint`. It also tells you about how many warnings and errors occur in each identifier and which identifier are [correctable](https://github.com/realm/SwiftLint#auto-correct) (it means you can use `swiftlint autocorrect` to fix).
 
