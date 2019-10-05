@@ -23,7 +23,7 @@ public final class Linter {
             printDescription()
             return
         }
-        let folder = FileSystem().currentFolder
+        let folder = Folder.current
 
         print("Deleting `.swiftlint.yml` file if needed...")
         try? folder.file(named: fileName).delete()
@@ -106,7 +106,7 @@ public final class Linter {
             print("Adding `excluded` section...")
         }
 
-        try? file.write(string: content, encoding: .utf8)
+        try? file.write(content, encoding: .utf8)
     }
 
     private func extractIdentifiers(outputs: [String]) -> (Int, Int, [String: Int]) {
@@ -177,7 +177,7 @@ public final class Linter {
                 content += onelineContent
             }
 
-            try? file.write(string: content + "\n" + (try file.readAsString()), encoding: .utf8)
+            try? file.write(content + "\n" + (try file.readAsString()), encoding: .utf8)
         }
     }
 }
