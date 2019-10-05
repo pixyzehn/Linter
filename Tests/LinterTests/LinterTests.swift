@@ -16,7 +16,7 @@ class LinterTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Rename `.swiftlint.yml` to `.swiftlint-temp.yml` for tests.
-        if let file = try? FileSystem().currentFolder.file(named: fileName) {
+        if let file = try? Folder.current.file(named: fileName) {
             self.file = file
             try? self.file.rename(to: tmpFileName)
         }
@@ -25,10 +25,10 @@ class LinterTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
         // Delete the fake `.swiftlint.yml`.
-        try? FileSystem().currentFolder.file(named: fileName).delete()
+        try? Folder.current.file(named: fileName).delete()
 
         // Rename `.swiftlint-tmp.yml` to `.swiftlint.yml`.
-        if let file = try? FileSystem().currentFolder.file(named: tmpFileName) {
+        if let file = try? Folder.current.file(named: tmpFileName) {
             try? file.rename(to: fileName)
         }
     }
@@ -36,7 +36,7 @@ class LinterTests: XCTestCase {
     func testCreatingYamlForSwiftLint() throws {
         try Linter(arguments: ["linter", "--included", "Templates"]).run()
 
-        let file = try FileSystem().currentFolder.file(named: fileName)
+        let file = try Folder.current.file(named: fileName)
         let content = try file.readAsString()
 
         XCTAssertTrue(content.contains("disabled_rules:"))
@@ -54,7 +54,7 @@ class LinterTests: XCTestCase {
     func testIncludedAndExcludedOptions() throws {
         try Linter(arguments: ["linter", "--included", "Main", "MainTests", "--excluded", "Pods", "Carthage"]).run()
 
-        let file = try FileSystem().currentFolder.file(named: fileName)
+        let file = try Folder.current.file(named: fileName)
         let content = try file.readAsString()
 
         XCTAssertTrue(content.contains("included:\n  - Main\n  - MainTests"))
